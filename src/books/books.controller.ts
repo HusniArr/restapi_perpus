@@ -1,7 +1,8 @@
 import { Controller, Body, Param, Post, Get, Put, Delete,Inject } from '@nestjs/common';
 import { BooksService } from './books.service';
-import { Books } from './entities/books.entity';
+import { Book } from './entities/book.entity';
 import { BookDto } from './dto/book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Controller('books')
 export class BooksController {
@@ -9,12 +10,12 @@ export class BooksController {
     private  booksService:BooksService
 
     @Get('')
-    findAll():Promise<Books[]> {
+    findAll():Promise<Book[]> {
         const result = this.booksService.findAll();
         return result;
     }
     @Get(':id')
-    findOne(@Param('id') id:number):Promise<Books>{
+    findOne(@Param('id') id:number):Promise<Book>{
         const result =  this.booksService.findOne(id);
         return result;
     }
@@ -22,5 +23,15 @@ export class BooksController {
     create(@Body() book:BookDto):Promise<BookDto>{
         const result = this.booksService.create(book);
         return result;
+    }
+    @Put(':id')
+    update(@Param('id') id :number, @Body() book: UpdateBookDto):Promise<UpdateBookDto>{
+        const result = this.booksService.update(id, book);
+        return result;
+    }
+    @Delete(':id')
+     remove(@Param('id') id:number){
+          this.booksService.remove(id);
+        return {message:"berhasil dihapus.",data:null};
     }
 }

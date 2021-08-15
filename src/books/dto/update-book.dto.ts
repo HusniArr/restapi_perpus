@@ -1,7 +1,8 @@
 import { IsNumber, IsNotEmpty, IsString } from "class-validator";
 
-export class BookDto {
-
+export class UpdateBookDto {
+    @IsNumber()
+    id:number;
     @IsNumber()
     id_lokasi:number;
     @IsNotEmpty()

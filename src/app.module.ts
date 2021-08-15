@@ -2,11 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { BooksService } from './books/books.service';
-import { BooksController } from './books/books.controller';
 import { BooksModule } from './books/books.module';
 import { LocationModule } from './location/location.module';
-import { Books } from './books/entities/books.entity';
+import { Book } from './books/entities/book.entity';
 import { Location } from './location/entities/location.entities';
 
 @Module({
@@ -17,10 +15,11 @@ import { Location } from './location/entities/location.entities';
     username:"postgres",
     password:"c4hbumiayu",
     database:"db_perpus",
-    entities:[Books,Location],
+    entities:["dist/**/*.entity{.ts,.js}"],
     synchronize:true,
-  }), LocationModule],
-  controllers: [AppController,BooksController],
-  providers: [AppService,BooksService],
+    autoLoadEntities:true,
+  })],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

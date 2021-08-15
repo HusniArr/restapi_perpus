@@ -1,23 +1,36 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Books } from './entities/books.entity';
+import { Book } from './entities/book.entity';
 import { BookDto } from './dto/book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Injectable()
 export class BooksService {
     constructor(
-        @InjectRepository(Books)
-        private booksRepository : Repository<Books>
+        @InjectRepository(Book)
+        private bookRepository : Repository<Book>
     ){}
 
-    async findAll():Promise<Books[]>{
-        return await this.booksRepository.find();
+    async findAll():Promise<Book[]>{
+        return await this.bookRepository.find();
     }
-    async findOne(id: number):Promise<Books>{
-        return await this.booksRepository.findOne(id);
+    async findOne(id: number):Promise<Book>{
+        return await this.bookRepository.findOne(id);
     }
     async create(book:BookDto):Promise<BookDto>{
-        return await this.booksRepository.save(book);
+        return await this.bookRepository.save(book);
+    }
+    async update(id: number, book:UpdateBookDto):Promise<UpdateBookDto>{
+       await this.bookRepository.update(id,book);
+      const updateBook = this.bookRepository.findOne(id);
+        if(updateBook){
+            return updateBook;
+        }
+      throw BadRequestException;
+    }
+    async remove(id:number){
+        const book = await this.bookRepository.findOne(id);
+        return await this.bookRepository.remove(book);
     }
 }

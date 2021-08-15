@@ -1,5 +1,5 @@
-import { Entity, Column,PrimaryGeneratedColumn,OneToMany , JoinColumn} from "typeorm";
-import { Books} from '../../books/entities/books.entity';
+import { Entity, Column,PrimaryGeneratedColumn,ManyToMany, ManyToOne , JoinColumn, OneToMany} from "typeorm";
+import { Book} from '../../books/entities/book.entity';
 
 @Entity()
 export class Location {
@@ -8,9 +8,10 @@ export class Location {
     @Column()
     nama_lokasi:string;
     @Column()
-    qty:number;
-    @OneToMany( type => Books, books => books.location)
-    @JoinColumn({referencedColumnName:"id_lokasi"})
-    books:Books[]
+    qty:number
+    @OneToMany(() =>Book,book=>book.location)
+    @JoinColumn({name:'id',referencedColumnName:'id_lokasi'})
+    book:Book[]
+
 
 }
