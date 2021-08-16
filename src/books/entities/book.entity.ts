@@ -1,12 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn ,ManyToOne, JoinColumn, OneToOne} from "typeorm";
-import { Location } from "../../location/entities/location.entities";
+import { Rak } from "../../rak/entities/rak.entitity";
 
 @Entity()
 export class Book {
     @PrimaryGeneratedColumn()
     id:number;
-    @Column()
-    id_lokasi:number;
     @Column()
     kd_buku:string;
     @Column()
@@ -17,8 +15,9 @@ export class Book {
     penerbit:string;
     @Column()
     tahun_terbit:string;
-    @ManyToOne(() => Location,location=>location.book)
-    @JoinColumn({name:'id_lokasi',referencedColumnName:'id'})
-    location:Location[]
+    @Column()
+    stok:number;
+    @ManyToOne(()=> Rak, rak=> rak.book)
+    rak:Rak
    
 }

@@ -19,16 +19,17 @@
 . tgl_transaksi date
 . jenis_transaksi varchar(10)
 # tabel buku 
-. id_buku int pk
-. id_lokasi int fk
+. id int pk
 . judul_buku
 . pengarang
 . penerbit
-. tahun_terbit
-# tabel lokasi
-. id_lokasi int pk
-. nama_lokasi varchar(10)
-. kuantitas int
+. tahun_terbit varchar(10)
+. stok int
+# tabel rak
+. id int pk
+. nama_rak varchar(50)
+. lokasi_rak varchar (50)
+. id_buku int fk
 # tabel id_petugas
 . id_petugas int pk
 . username varchar(100)

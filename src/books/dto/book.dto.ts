@@ -2,8 +2,6 @@ import { IsNumber, IsNotEmpty, IsString } from "class-validator";
 
 export class BookDto {
 
-    @IsNumber()
-    id_lokasi:number;
     @IsNotEmpty()
     @IsString()
     kd_buku : string;
@@ -17,5 +15,8 @@ export class BookDto {
     @IsString()
     penerbit:string;
     @IsNotEmpty()
-    tahun_terbit:string;   
+    @IsString()
+    tahun_terbit:string; 
+    @IsNumber()
+    stok:number;  
 }

@@ -3,8 +3,6 @@ import { IsNumber, IsNotEmpty, IsString } from "class-validator";
 export class UpdateBookDto {
     @IsNumber()
     id:number;
-    @IsNumber()
-    id_lokasi:number;
     @IsNotEmpty()
     @IsString()
     kd_buku : string;
@@ -18,5 +16,7 @@ export class UpdateBookDto {
     @IsString()
     penerbit:string;
     @IsNotEmpty()
-    tahun_terbit:string;   
+    tahun_terbit:string;
+    @IsNumber()
+    stok:number;   
 }
