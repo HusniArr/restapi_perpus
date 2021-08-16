@@ -22,8 +22,8 @@ export class RakController {
         const result = this.rakService.create(rak);
         return result;
     }
-    @Post(':id')
-    update(@Param('id') id: number, @Body() rak:UpdateRakDto):Promise<UpdateRakDto>{
+    @Put(':id')
+    update(@Param('id') id: number, @Body() rak:UpdateRakDto){
         const result = this.rakService.update(id,rak);
         return result;
     }

@@ -18,5 +18,7 @@ export class UpdateBookDto {
     @IsNotEmpty()
     tahun_terbit:string;
     @IsNumber()
-    stok:number;   
+    stok:number;
+    @IsNumber()
+    id_rak:number;   
 }

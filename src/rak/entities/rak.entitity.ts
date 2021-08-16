@@ -8,8 +8,7 @@ export class Rak {
     nama_rak:string;
     @Column()
     lokasi_rak:string;
-    @OneToMany(()=> Book, book=>book.rak)
-    @JoinColumn({name:'id_buku',referencedColumnName:'id'})
+    @OneToMany(type => Book,(book:Book) => book.rak)
     book:Book[]
 
 

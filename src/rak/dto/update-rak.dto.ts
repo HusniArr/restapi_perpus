@@ -1,12 +1,13 @@
-import { IsNumber, IsNotEmpty, IsString, isNotEmpty } from "class-validator";
+import { IsNumber,  IsString, isNotEmpty, IsNotEmpty } from "class-validator";
 
 export class UpdateRakDto {
     @IsNumber()
     id:number;
     @IsString()
-    nama_rak:string;
     @IsNotEmpty()
+    nama_rak:string;
     @IsString()
+    @IsNotEmpty()
     lokasi_rak:string;
     
 }

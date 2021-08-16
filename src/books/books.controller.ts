@@ -25,7 +25,7 @@ export class BooksController {
         return result;
     }
     @Put(':id')
-    update(@Param('id') id :number, @Body() book: UpdateBookDto):Promise<UpdateBookDto>{
+    update(@Param('id') id :number, @Body() book: UpdateBookDto){
         const result = this.booksService.update(id, book);
         return result;
     }

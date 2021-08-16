@@ -17,7 +17,7 @@ export class Book {
     tahun_terbit:string;
     @Column()
     stok:number;
-    @ManyToOne(()=> Rak, rak=> rak.book)
+    @ManyToOne(() => Rak, rak => rak.book)
+    @JoinColumn({name:'id_rak',referencedColumnName:'id'})
     rak:Rak
-   
 }

@@ -19,4 +19,6 @@ export class BookDto {
     tahun_terbit:string; 
     @IsNumber()
     stok:number;  
+    @IsNumber()
+    id_rak:number;
 }
