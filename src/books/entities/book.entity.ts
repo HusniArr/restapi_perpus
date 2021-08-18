@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn ,ManyToOne, JoinColumn, OneToOne} from "typeorm";
+import { Peminjaman } from "../../peminjaman/entities/peminjaman.entity";
+import { Entity, Column, PrimaryGeneratedColumn ,ManyToOne, JoinColumn, OneToOne, OneToMany} from "typeorm";
 import { Rak } from "../../rak/entities/rak.entitity";
 
 @Entity()
@@ -20,4 +21,6 @@ export class Book {
     @ManyToOne(() => Rak, rak => rak.book)
     @JoinColumn({name:'id_rak',referencedColumnName:'id'})
     rak:Rak
+    @OneToMany(()=>Peminjaman,peminjaman => peminjaman.book)
+    peminjaman:Peminjaman[]
 }

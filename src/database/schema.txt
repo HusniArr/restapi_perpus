@@ -1,9 +1,9 @@
 # tabel peminjaman
 . id_peminjaman int pk
 . id_buku int fk
-. id_transaksi int fk
+. id_anggota int
 . tgl_pinjam date
-. jml_buku_pinjam int 
+. jml_pinjam int 
 . status varchar(10)
 # tabel pengembalian
 . id_pengembalian int pk
@@ -11,13 +11,6 @@
 . tgl_kembali date fk
 . jml_buku_kembali int
 . denda
-# tabel transaksi
-. id_transaksi int pk
-. id_anggota int fk
-. id_petugas int fk
-. id_buku int fk
-. tgl_transaksi date
-. jenis_transaksi varchar(10)
 # tabel buku 
 . id int pk
 . judul_buku
@@ -30,8 +23,14 @@
 . nama_rak varchar(50)
 . lokasi_rak varchar (50)
 . id_buku int fk
-# tabel id_petugas
+# tabel petugas
 . id_petugas int pk
 . username varchar(100)
 . pass varchar(100)
 . hp varchar(13)
+# tabel anggota 
+. id_anggota int pk
+. nama_anggota varchar (100)
+. kelas
+. no_telp varchar
+. alamat varchar
